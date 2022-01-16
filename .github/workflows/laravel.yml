@@ -24,4 +24,4 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           port: ${{ secrets.SSH_PORT }}          
           password: ${{ secrets.SSH_PASSWORD }}
-          script: "cd /home/u905095300/domains/siteworld.co.in/yuvirelease/ && ls -la && ./deploy.sh"
+          script: "cd /home/u905095300/domains/siteworld.co.in/yuvirelease/ && ./deploy.sh"
