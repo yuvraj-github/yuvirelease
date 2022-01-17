@@ -29,7 +29,7 @@
             <a href="/viewProjects" class="btn btn-secondary mb-2">clear</a>
         </form>
     </div>
-    <h3>View Project <a href="#" style="float: right; font-size: 20px;" id="addProject" data-token=''>Add
+    <h3>View Projec <a href="#" style="float: right; font-size: 20px;" id="addProject" data-token=''>Add
             Project <i class="fa fa-plus" aria-hidden="true"></i></a></h3>
     <table class="table">
         <thead class="thead-light">
