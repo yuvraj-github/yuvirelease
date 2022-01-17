@@ -34,12 +34,12 @@ class Note extends Model
         }
     }
     /**
-     * Function to get published notes
+     * Function to get all notes
      *
      * @param  object $criteria
-     * @return void
+     * @return object
      */
-    public function getPublishedNotes($criteria)
+    public function getAllNotes($criteria)
     {
         try {
             DB::enableQueryLog();
@@ -56,7 +56,7 @@ class Note extends Model
             }
             $whereCondition = trim($whereCondition, " AND ");
             $notes = Note::with('project')
-               ->whereHas('project', function ($query) use($whereCondition){
+                ->whereHas('project', function ($query) use ($whereCondition) {
                     $query->whereRaw($whereCondition);
                 })
                 ->sortable()
@@ -102,5 +102,21 @@ class Note extends Model
             return true;
         }
         return false;
+    }
+    /**
+     * Function to get published notes.
+     *
+     * @return object
+     */
+    public function getPublishedNotes()
+    {
+        $publishedNotes = [];
+        $notes = Note::join('projects', 'projects.id', '=', 'notes.projectid') 
+                    ->where('notes.published', '1')
+                    ->get(['notes.title', 'notes.published', 'projects.projectname']);  
+        foreach($notes as $key => $val) {
+            $publishedNotes[$val->projectname][]=$val;
+        }     
+        return (object)$publishedNotes;
     }
 }

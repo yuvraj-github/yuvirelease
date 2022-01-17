@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\CustomAuthController;
+use App\Http\Controllers\HomeController;
 use App\Http\Middleware\LoginCheck;
 use App\Http\Middleware\CheckUser;
 
@@ -30,7 +31,7 @@ Route::middleware(['checkUser'])->group(function () {
 });
 
 Route::middleware(['loginCheck'])->group(function () {
-    Route::view('/', 'home');
+    Route::get('/', [HomeController::class, 'index']);
     Route::get('/viewProjects', [ProjectController::class, 'index']);
     Route::post('/project/save', [ProjectController::class, 'save']);
     Route::get('/project/edit/{id}', [ProjectController::class, 'edit']);

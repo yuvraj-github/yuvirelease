@@ -23,7 +23,7 @@ class NoteController extends Controller
             'published' => $request->published,
             'projectName' => $request->projectName
         ];
-        $notes = $this->noteModel->getPublishedNotes($criteria);
+        $notes = $this->noteModel->getAllNotes($criteria);
         return view('viewnotes', ['notes' => $notes, 'criteria' => $criteria]);
     }
     /**
