@@ -113,7 +113,7 @@ class Note extends Model
         $publishedNotes = [];
         $notes = Note::join('projects', 'projects.id', '=', 'notes.projectid') 
                     ->where('notes.published', '1')
-                    ->get(['notes.title', 'notes.published', 'projects.projectname']);  
+                    ->get(['notes.id', 'notes.title', 'notes.published', 'projects.projectname']);  
         foreach($notes as $key => $val) {
             $publishedNotes[$val->projectname][]=$val;
         }     
