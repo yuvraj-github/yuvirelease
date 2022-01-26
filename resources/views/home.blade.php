@@ -1,6 +1,7 @@
 @extends('layout')
 
 @section('content')
+    <script src="/asset/js/releaseContent.js"></script>
     <h3>Home</h3>
     <div class="row">
         <div class="col-3">
@@ -21,7 +22,9 @@
                             <div class="card-body">
                                 <ul class="list-group list-group-flush">
                                     @foreach ($allNotes as $key => $val)
-                                        <li class="list-group-item">{{ $val->title }}</li>
+                                        <li class="list-group-item"><a href="javascript:void(0)"
+                                                data-noteid={{ $val->id }}
+                                                class="releaseNote">{{ $val->title }}</a></li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -30,7 +33,7 @@
                 @endforeach
             </div>
         </div>
-        <div class="col-9">
+        <div class="col-9" id="releaseContent">
 
         </div>
     </div>
